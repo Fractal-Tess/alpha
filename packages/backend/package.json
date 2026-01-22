@@ -1,5 +1,5 @@
 {
-  "name": "@lucide/backend",
+  "name": "@lucid/backend",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -14,8 +14,8 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@lucide/config": "workspace:*",
-    "@types/node": "^24.3.0",
+    "@lucid/config": "workspace:*",
+    "@types/node": "^25.0.10",
     "typescript": "catalog:"
   }
 }

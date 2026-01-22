@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
-body {
-  @apply bg-neutral-950 text-neutral-100;
-}
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@source "../../packages/ui/src/**/*.{html,js,svelte,ts}";
+@import "@lucid/ui/shadcn/css";

@@ -1,0 +1,251 @@
+# Lucid - Task Tracker
+
+## Setup & Infrastructure
+
+- [ ] User provides SvelteKit/shadcn-svelte/Turborepo template
+- [ ] Set up SvelteKit project structure
+- [ ] Set up Turborepo with Bun
+- [ ] Configure shared UI package with shadcn-svelte
+- [ ] Set up Convex project + schema
+- [ ] Integrate Better Auth with Convex adapter
+- [ ] Build Docling Python microservice
+- [ ] Create Dockerfile for Docling service
+- [ ] Implement LLM Router with OpenRouter
+- [ ] Configure router rules (config-driven)
+- [ ] Set up Vitest for unit testing
+- [ ] Set up Playwright for e2e testing
+- [ ] Configure Docker Compose for Dokploy
+- [ ] Set up environment variables
+
+## Phase 1: MVP - Core Study Tools
+
+### Organization System
+
+- [ ] Subject Groups CRUD (create, read, update, delete)
+- [ ] Subjects CRUD with icons/colors
+- [ ] Folders CRUD with nesting support
+- [ ] Drag & drop reordering
+- [ ] File tree UI component
+
+### Document Management
+
+- [ ] Document upload UI (drag & drop)
+- [ ] File type validation (PDF, DOC, DOCX)
+- [ ] File size validation (max 20MB)
+- [ ] Upload progress indicator
+- [ ] Convex file storage integration
+- [ ] Document download functionality
+- [ ] Document processing workflow (Convex → Docling)
+- [ ] Processing status indicators
+- [ ] Error handling for failed processing
+
+### Flashcards
+
+- [ ] Flashcard generation from documents
+- [ ] AI prompt for flashcard extraction
+- [ ] Flashcard viewer UI (flip cards)
+- [ ] Keyboard shortcuts (space, arrows)
+- [ ] SM-2 spaced repetition algorithm
+- [ ] "Cards due today" queue
+- [ ] Flashcard visual editor (add/edit/delete/reorder)
+- [ ] Rating UI (1-5 difficulty)
+
+### Quizzes
+
+- [ ] Quiz generation from documents
+- [ ] AI prompt for quiz creation
+- [ ] Multiple choice quiz UI
+- [ ] Answer validation + scoring
+- [ ] Explanation display for wrong answers
+- [ ] Quiz results summary
+- [ ] Quiz editor (add/edit/delete questions)
+
+### Summaries
+
+- [ ] Summary generation from documents
+- [ ] AI prompt for summarization
+- [ ] Section-based summary display
+- [ ] Summary text editor
+
+### Notes
+
+- [ ] Notes generation from documents
+- [ ] AI prompt for notes extraction
+- [ ] Key points extraction
+- [ ] Rich text/Markdown editor
+- [ ] Notes viewer
+
+### Generations System
+
+- [ ] Generations folder per subject (virtual)
+- [ ] Generation creation workflow
+- [ ] Source document selection UI
+- [ ] Generation status tracking
+- [ ] Source document references display
+- [ ] Filter generations by type
+- [ ] Filter generations by source document
+- [ ] Generation rename/delete
+
+### Sharing
+
+- [ ] Generate share codes for generations
+- [ ] Share code input/import UI
+- [ ] Public sharing toggle
+- [ ] Shared deck viewer
+
+### Export
+
+- [ ] Flashcards → Anki (.apkg) export
+- [ ] Flashcards → CSV export
+- [ ] Flashcards → JSON export
+- [ ] Flashcards → PDF (printable cards)
+- [ ] Quiz → PDF export
+- [ ] Quiz → JSON export
+- [ ] Notes → Markdown export
+- [ ] Notes → PDF export
+- [ ] Summary → Markdown export
+- [ ] Summary → PDF export
+- [ ] Batch export (multiple generations)
+- [ ] Subject ZIP export
+
+### Beta Deployment
+
+- [ ] Deploy to Dokploy
+- [ ] Configure Convex Cloud production
+- [ ] Set up domain + SSL
+- [ ] Beta flag: all users = paid
+
+---
+
+## Phase 2: Enhanced Learning
+
+### Chat with Document
+
+- [ ] Chat UI component
+- [ ] Message history per document
+- [ ] Context-aware AI responses
+- [ ] Citation display (link to source sections)
+- [ ] Follow-up questions support
+
+### Solve Mode (Homework Help)
+
+- [ ] Solve mode UI
+- [ ] Question input (text + image?)
+- [ ] Step-by-step solution generation
+- [ ] Subject/topic classification
+- [ ] Solution history
+
+### Progress Dashboard
+
+- [ ] Dashboard page layout
+- [ ] Daily stats tracking
+- [ ] Study streak calculation
+- [ ] Streak display (fire icon, count)
+- [ ] Cards studied chart
+- [ ] Quiz performance chart
+- [ ] Time spent studying
+- [ ] Weekly/monthly views
+- [ ] Weak areas identification
+- [ ] Recommended review items
+
+---
+
+## Phase 3: Advanced Features
+
+### Study Guide Generator
+
+- [ ] Study guide generation from documents
+- [ ] AI prompt for study guide creation
+- [ ] Topic importance ranking
+- [ ] Time estimates per topic
+- [ ] Structured topic editor UI
+- [ ] Topic completion tracking
+- [ ] Pre-test generation
+- [ ] Post-test generation
+- [ ] Score comparison display
+- [ ] Study Guide → PDF export
+- [ ] Study Guide → Notion export
+
+### Audio Recording & Lecture Notes
+
+- [ ] Audio recording UI
+- [ ] Audio file upload
+- [ ] Whisper API integration
+- [ ] Transcription workflow
+- [ ] Transcription status tracking
+- [ ] Auto-generated lecture notes
+- [ ] Key points extraction from audio
+- [ ] Action items extraction
+- [ ] Audio playback with transcript sync
+
+### Practice Problem Generator
+
+- [ ] Practice problem generation
+- [ ] Difficulty level selection (easy/medium/hard)
+- [ ] Step-by-step solutions
+- [ ] Answer input + validation
+- [ ] Topic-based problem sets
+- [ ] Mastery tracking per topic
+
+### Concept Map
+
+- [ ] Concept map generation from documents
+- [ ] AI prompt for concept extraction
+- [ ] Interactive graph visualization
+- [ ] Node editing (add/edit/delete)
+- [ ] Edge editing (connections)
+- [ ] Drag & drop node positioning
+- [ ] Auto-layout algorithm
+- [ ] Concept Map → PNG export
+- [ ] Concept Map → SVG export
+- [ ] Concept Map → JSON export (re-import)
+
+### Pomodoro Timer
+
+- [ ] Timer UI component
+- [ ] Work/break duration settings
+- [ ] Timer notifications
+- [ ] Session tracking
+- [ ] Integration with study sessions
+- [ ] Pomodoro stats in dashboard
+
+### Additional Exports
+
+- [ ] Quiz → Google Forms export
+- [ ] Quiz → Kahoot export
+- [ ] Notes → HTML export
+- [ ] Notes → DOCX export
+- [ ] Notes → Notion export
+- [ ] Summary → HTML export
+- [ ] Summary → DOCX export
+- [ ] Study Guide → Google Docs export
+
+---
+
+## Post-Launch
+
+### User Plans & Billing
+
+- [ ] Plan definitions (free vs paid limits)
+- [ ] Stripe/payment integration
+- [ ] Usage tracking
+- [ ] Upgrade prompts
+- [ ] Plan management UI
+
+### Mobile App
+
+- [ ] Mobile app project setup (TBD: Svelte Native or alternative)
+- [ ] Shared package integration
+- [ ] Mobile-optimized flashcard UI
+- [ ] Mobile quiz UI
+- [ ] Offline study mode (if feasible)
+- [ ] Push notifications for review reminders
+
+### Performance & Polish
+
+- [ ] Performance optimization
+- [ ] Loading states
+- [ ] Error boundaries
+- [ ] Analytics integration
+- [ ] User feedback system
+- [ ] Onboarding flow
