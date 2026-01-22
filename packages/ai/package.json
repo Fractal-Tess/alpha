@@ -1,0 +1,27 @@
+{
+  "name": "@lucid/ai",
+  "version": "1.0.0",
+  "description": "LLM router and AI prompts for Lucid study app",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./router": "./src/router.ts",
+    "./config": "./src/router.config.ts",
+    "./classifier": "./src/classifier.ts",
+    "./prompts/*": "./src/prompts/*.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@lucid/config": "workspace:*",
+    "@types/node": "^25.0.10",
+    "typescript": "catalog:",
+    "vitest": "^4.0.17"
+  }
+}
