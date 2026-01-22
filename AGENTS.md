@@ -34,12 +34,23 @@ Update `progress.txt` with timestamp, action (Started/Completed), task name, and
 
 1. Mark task complete in `tasks.md`: `[ ]` → `[x]`
 2. Update `progress.txt` with completion timestamp and commit hash
-3. Commit all changes including the task update
+3. Build the application to validate changes before committing
+4. Commit all changes including the task update
+
+## Package Manager & Runtime
+
+- Always use `bun` as the package manager and runtime
+- Install dependencies with `bun add <package>` before using them in code
+- Never use npm, yarn, or pnpm
 
 ## Rules
 
 - Do NOT skip writing tests
 - Do NOT mark tasks complete until tests pass
 - Do NOT work on multiple tasks simultaneously
+- Do NOT use type assertions (`as Type`, `as any`, `as unknown`)
+- Do NOT use `@ts-ignore`, `@ts-expect-error`, `@ts-nocheck`, or any `@ts-` comment rules
+- Do NOT use dependencies without installing them first
 - Do read the spec files in `spec/` thoroughly before starting
 - Do ask for clarification if a task is ambiguous
+- Do run `bun run build` after completing a feature and before committing

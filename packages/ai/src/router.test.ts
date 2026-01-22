@@ -81,7 +81,7 @@ describe("LLMRouter", () => {
         messages: [{ role: "user", content: "Test" }],
       });
 
-      const [url, options] = mockFetch.mock.calls[0];
+      const [url, options] = mockFetch.mock.calls[0]!;
       expect(url).toBe("https://openrouter.ai/api/v1/chat/completions");
       expect(options.headers.Authorization).toBe("Bearer test-api-key");
       expect(options.headers["HTTP-Referer"]).toBe("https://test.com");
@@ -178,7 +178,7 @@ describe("LLMRouter", () => {
         modelOverride: "claude-sonnet",
       });
 
-      const [, options] = mockFetch.mock.calls[0];
+      const [, options] = mockFetch.mock.calls[0]!;
       const body = JSON.parse(options.body);
       expect(body.model).toBe("anthropic/claude-3.5-sonnet");
     });
@@ -228,7 +228,7 @@ describe("LLMRouter", () => {
         complexity: 0.8,
       });
 
-      const [, options] = mockFetch.mock.calls[0];
+      const [, options] = mockFetch.mock.calls[0]!;
       const body = JSON.parse(options.body);
       // High complexity should route to claude-sonnet for explain task
       expect(body.model).toBe("anthropic/claude-3.5-sonnet");
@@ -254,7 +254,7 @@ describe("LLMRouter", () => {
 
       expect(result).toBe("Response");
 
-      const [, options] = mockFetch.mock.calls[0];
+      const [, options] = mockFetch.mock.calls[0]!;
       const body = JSON.parse(options.body);
       expect(body.messages).toHaveLength(2);
       expect(body.messages[0].role).toBe("system");

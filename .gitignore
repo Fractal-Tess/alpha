@@ -49,3 +49,9 @@ coverage
 .cache
 tmp
 temp
+
+# Sisyphus
+.sisyphus
+
+# Direnv
+.direnv
