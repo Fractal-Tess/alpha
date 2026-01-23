@@ -13,11 +13,13 @@ import type * as functions_documents from "../functions/documents.js";
 import type * as functions_flashcardItems from "../functions/flashcardItems.js";
 import type * as functions_folders from "../functions/folders.js";
 import type * as functions_generations from "../functions/generations.js";
+import type * as functions_quizItems from "../functions/quizItems.js";
 import type * as functions_subjectGroups from "../functions/subjectGroups.js";
 import type * as functions_subjects from "../functions/subjects.js";
 import type * as healthCheck from "../healthCheck.js";
 import type * as http from "../http.js";
 import type * as workflows_generateFlashcards from "../workflows/generateFlashcards.js";
+import type * as workflows_generateQuiz from "../workflows/generateQuiz.js";
 import type * as workflows_processDocument from "../workflows/processDocument.js";
 
 import type {
@@ -32,11 +34,13 @@ declare const fullApi: ApiFromModules<{
   "functions/flashcardItems": typeof functions_flashcardItems;
   "functions/folders": typeof functions_folders;
   "functions/generations": typeof functions_generations;
+  "functions/quizItems": typeof functions_quizItems;
   "functions/subjectGroups": typeof functions_subjectGroups;
   "functions/subjects": typeof functions_subjects;
   healthCheck: typeof healthCheck;
   http: typeof http;
   "workflows/generateFlashcards": typeof workflows_generateFlashcards;
+  "workflows/generateQuiz": typeof workflows_generateQuiz;
   "workflows/processDocument": typeof workflows_processDocument;
 }>;
 
