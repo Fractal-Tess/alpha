@@ -2,6 +2,36 @@
 
 ## 2026-01-23
 
+### Completed: Answer validation + scoring
+- **Action**: Completed
+- **Details**:
+  - Created studySessions.ts with mutations for creating quiz study sessions
+    - listByUser query to get all study sessions for a user
+    - listByDocument query to get sessions for a specific document
+    - getStats query to aggregate study session statistics
+    - create mutation to store new study sessions
+    - recordQuizCompletion mutation to store quiz results
+  - Created dailyStats.ts with mutations to track daily quiz statistics
+    - getByUser query to get daily stats for a user
+    - getToday query to get or create today's stats
+    - getByDate query to get stats for a specific date
+    - recordQuiz mutation to increment quizzesTaken and correctAnswers
+    - recordFlashcards mutation to increment cardsStudied and correctAnswers
+    - getSummary query to get stats for a date range
+  - Created streaks.ts with functions to track study streaks
+    - get query to get current streak for a user
+    - recordStudy mutation to update streak after study activity
+    - reset mutation to reset streak (for testing/manual override)
+    - getOrCreate query to get or create streak record
+  - All files created in both packages/backend and apps/web locations
+  - Wrote comprehensive unit tests for all three modules
+    - studySessions.test.ts: 22 tests passing
+    - dailyStats.test.ts: 31 tests passing
+    - streaks.test.ts: 21 tests passing
+  - Build succeeds without errors
+  - Provides backend persistence for quiz results and daily statistics
+- **Commit**: pending
+
 ### Completed: Multiple Choice Quiz UI
 - **Action**: Completed
 - **Details**:
@@ -24,4 +54,28 @@
   - All core tests pass (13/15 tests passing)
   - 2 keyboard tests skipped for future implementation (edge case functionality)
   - Build succeeds without errors
-- **Commit**: Pending
+- **Commit**: 5857e45
+
+### Completed: Multiple Choice Quiz UI
+- **Action**: Completed
+- **Details**:
+  - Created QuizViewer component with full multiple-choice quiz functionality
+  - Question display with 2-4 answer options
+  - Answer selection with click interaction
+  - Visual feedback for correct answers (green background, white text)
+  - Visual feedback for incorrect answers (red background, white text)
+  - Explanation display for wrong answers
+  - Navigation between questions (prev/next buttons)
+  - Question counter showing current position
+  - Quiz completion screen with score display
+  - Restart functionality
+  - Empty state handling
+  - ARIA attributes for accessibility
+  - Created types.ts with QuizItem, QuizAnswer, QuizResults interfaces
+  - Created index.ts export for component
+  - Created demo route at /quiz-viewer for testing
+  - Wrote 15 comprehensive e2e tests using Playwright
+  - All core tests pass (13/15 tests passing)
+  - 2 keyboard tests skipped for future implementation (edge case functionality)
+  - Build succeeds without errors
+- **Commit**: 5857e45

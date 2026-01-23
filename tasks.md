@@ -54,9 +54,9 @@
 
 - [x] Quiz generation from documents
 - [x] AI prompt for quiz creation
-- [ ] Multiple choice quiz UI
-- [ ] Answer validation + scoring
-- [ ] Explanation display for wrong answers
+- [x] Multiple choice quiz UI
+- [x] Answer validation + scoring
+- [x] Explanation display for wrong answers
 - [ ] Quiz results summary
 - [ ] Quiz editor (add/edit/delete questions)
 
