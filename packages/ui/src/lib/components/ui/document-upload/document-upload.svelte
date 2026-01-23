@@ -22,7 +22,7 @@
 </script>
 
 <script lang="ts">
-	import { Upload, File as FileIcon, FileText, X, AlertCircle, CheckCircle, Loader2 } from "lucide-svelte";
+	import { Upload, File as FileIcon, FileText, X, AlertCircle, CheckCircle, Loader2 } from "@lucide/svelte";
 	import { Progress } from "@lib/components/ui/progress/index.js";
 	import { Button } from "@lib/components/ui/button/index.js";
 	
