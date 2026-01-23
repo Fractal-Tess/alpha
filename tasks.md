@@ -43,17 +43,17 @@
 
 - [x] Flashcard generation from documents
 - [x] AI prompt for flashcard extraction
-- [ ] Flashcard viewer UI (flip cards)
-- [ ] Keyboard shortcuts (space, arrows)
+- [x] Flashcard viewer UI (flip cards)
+- [x] Keyboard shortcuts (space, arrows)
 - [x] SM-2 spaced repetition algorithm
 - [x] "Cards due today" queue
-- [ ] Flashcard visual editor (add/edit/delete/reorder)
-- [ ] Rating UI (1-5 difficulty)
+- [x] Flashcard visual editor (add/edit/delete/reorder)
+- [x] Rating UI (1-5 difficulty)
 
 ### Quizzes
 
-- [ ] Quiz generation from documents
-- [ ] AI prompt for quiz creation
+- [x] Quiz generation from documents
+- [x] AI prompt for quiz creation
 - [ ] Multiple choice quiz UI
 - [ ] Answer validation + scoring
 - [ ] Explanation display for wrong answers

@@ -259,3 +259,53 @@
   - Updated convex/tsconfig.json to exclude test files
   - All 110 tests pass, Convex build succeeds
 - **Commit**: Pending
+
+### Completed: Flashcard UI Components
+- **Action**: Completed
+- **Timestamp**: 2026-01-23
+- **Details**:
+  - Fixed duplicate `cn` import in flashcard-viewer.svelte
+  - Updated Playwright config to use preview server with 4 workers
+  - Added hydration wait in e2e tests for Svelte SSR compatibility
+  - Created packages/ui/src/lib/components/ui/flashcard-editor/ with:
+    - FlashcardEditor component with full CRUD functionality
+    - Add new cards via form
+    - Edit existing cards inline
+    - Delete cards with confirmation
+    - Drag & drop reordering
+    - Empty state display
+  - Created test route at /flashcard-editor for demo
+  - 13 new e2e tests for FlashcardEditor
+  - All 26 e2e tests pass, build succeeds
+- **Commit**: Pending
+## 2026-01-23
+
+### Completed: Quiz Generation System
+- **Action**: Completed
+- **Details**:
+  - Created packages/backend/convex/functions/quizItems.ts with:
+    - listByGeneration: Query quiz items by generation ID
+    - get: Query single quiz item by ID
+    - create: Create quiz item with validation (2-4 options, correctIndex 0-3)
+    - createBatch: Batch create multiple quiz items
+    - update: Update quiz item fields (question, options, correctIndex, explanation)
+    - reorder: Reorder quiz items within generation
+    - remove: Delete quiz item
+  - Created packages/backend/convex/workflows/generateQuiz.ts with:
+    - getDocumentsForGeneration: Query document data for quiz generation
+    - updateGenerationStatus: Update generation status (generating/ready/failed)
+    - createQuizItems: Batch create quiz items
+    - generateQuiz: Action that calls OpenRouter API (DeepSeek model) to generate quiz questions
+    - retryGeneration: Retry failed quiz generations
+    - System prompt for multiple-choice quiz generation with explanations
+    - Zod schema validation (question, options[2-4], correctIndex[0-3], explanation)
+    - JSON parsing with markdown code block handling
+  - Created packages/backend/convex/functions/quizItems.test.ts with 47 comprehensive tests
+  - Created packages/backend/convex/workflows/generateQuiz.test.ts with 21 tests:
+    - 7 unit tests for schema validation
+    - 14 integration tests for workflow functions
+  - Synced quiz files to apps/web/src/convex/ for runtime integration
+  - All 110 tests pass across backend package (136 including quiz tests)
+- **Commit**: 44a5afa
+
+
