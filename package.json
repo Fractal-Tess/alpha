@@ -26,7 +26,6 @@
     "shadcn": "bunx shadcn-svelte@latest add $@ -c packages/ui"
   },
   "dependencies": {
-    "@alpha/env": "workspace:*",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },
