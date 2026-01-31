@@ -9,6 +9,7 @@
     "./shadcn/*": "./src/lib/components/ui/*/index.js",
     "./shadcn/css": "./src/app.css",
     "./styles/*": "./src/lib/styles/*.css",
+    "./dark-veil": "./src/lib/components/dark-veil/index.js",
     ".": "./src/lib/index.ts"
   },
   "scripts": {
@@ -46,6 +47,7 @@
     "jsdom": "^27.4.0",
     "layerchart": "2.0.0-next.43",
     "mode-watcher": "^1.1.0",
+    "ogl": "^1.0.11",
     "paneforge": "^1.0.2",
     "svelte": "^5.48.0",
     "svelte-check": "^4.3.5",
