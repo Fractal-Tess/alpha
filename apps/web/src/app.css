@@ -2,4 +2,4 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 @source "../../../packages/ui/src/**/*.{html,js,svelte,ts}";
-@import "@alpha/ui/shadcn/css";
+@import "../../../packages/ui/src/app.css";
