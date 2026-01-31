@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { useQuery, useConvexClient } from 'convex-svelte';
-	import { api } from '@lucid/backend/convex/_generated/api';
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '@lucid/ui/shadcn/card';
-	import { Badge } from '@lucid/ui/shadcn/badge';
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@lucid/ui/shadcn/tabs';
+	import { api } from '@alpha/backend/convex/_generated/api';
+	import { Button } from '@alpha/ui/shadcn/button';
+	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
+	import { Badge } from '@alpha/ui/shadcn/badge';
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@alpha/ui/shadcn/tabs';
 	import { 
 		Brain, BookOpen, FileEdit, Sparkles, ArrowLeft, 
 		Loader2, RefreshCw, FileText

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { useQuery } from 'convex-svelte';
-	import { api } from '@lucid/backend/convex/_generated/api';
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@lucid/ui/shadcn/card';
+	import { api } from '@alpha/backend/convex/_generated/api';
+	import { Button } from '@alpha/ui/shadcn/button';
+	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
 	import { BookOpen, FileText, Brain, Sparkles, Plus } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
 

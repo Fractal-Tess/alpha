@@ -2,7 +2,7 @@ import { v } from "convex/values";
 import { action, internalMutation, internalQuery } from "../_generated/server";
 import { api, internal } from "../_generated/api";
 import type { Id } from "../_generated/dataModel";
-import { notesResponseSchema, createNotesPrompt } from "@lucid/ai/prompts/notes";
+import { notesResponseSchema, createNotesPrompt } from "@alpha/ai/prompts/notes";
 
 interface DocumentForGeneration {
   _id: Id<"documents">;

@@ -77,43 +77,43 @@
 
 ### Generations System
 
-- [ ] Generations folder per subject (virtual)
-- [ ] Generation creation workflow
-- [ ] Source document selection UI
-- [ ] Generation status tracking
-- [ ] Source document references display
-- [ ] Filter generations by type
-- [ ] Filter generations by source document
-- [ ] Generation rename/delete
+- [x] Generations folder per subject (virtual)
+- [x] Generation creation workflow
+- [x] Source document selection UI
+- [x] Generation status tracking
+- [x] Source document references display
+- [x] Filter generations by type
+- [x] Filter generations by source document
+- [x] Generation rename/delete
 
 ### Sharing
 
-- [ ] Generate share codes for generations
-- [ ] Share code input/import UI
-- [ ] Public sharing toggle
-- [ ] Shared deck viewer
+- [x] Generate share codes for generations
+- [x] Share code input/import UI
+- [x] Public sharing toggle
+- [x] Shared deck viewer
 
 ### Export
 
 - [ ] Flashcards → Anki (.apkg) export
-- [ ] Flashcards → CSV export
-- [ ] Flashcards → JSON export
+- [x] Flashcards → CSV export
+- [x] Flashcards → JSON export
 - [ ] Flashcards → PDF (printable cards)
 - [ ] Quiz → PDF export
-- [ ] Quiz → JSON export
-- [ ] Notes → Markdown export
+- [x] Quiz → JSON export
+- [x] Notes → Markdown export
 - [ ] Notes → PDF export
-- [ ] Summary → Markdown export
+- [x] Summary → Markdown export
 - [ ] Summary → PDF export
-- [ ] Batch export (multiple generations)
+- [x] Batch export (multiple generations)
 - [ ] Subject ZIP export
 
 ### Beta Deployment
 
-- [ ] Deploy to Dokploy
-- [ ] Configure Convex Cloud production
-- [ ] Set up domain + SSL
-- [ ] Beta flag: all users = paid
+- [x] Deploy to Dokploy
+- [x] Configure Convex Cloud production
+- [x] Set up domain + SSL
+- [x] Beta flag: all users = paid
 
 ---
 

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Input } from '@lucid/ui/shadcn/input';
-	import { Label } from '@lucid/ui/shadcn/label';
-	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@lucid/ui/shadcn/card';
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@lucid/ui/shadcn/tabs';
+	import { Button } from '@alpha/ui/shadcn/button';
+	import { Input } from '@alpha/ui/shadcn/input';
+	import { Label } from '@alpha/ui/shadcn/label';
+	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@alpha/ui/shadcn/tabs';
 	import { goto } from '$app/navigation';
 
 	let email = $state('');

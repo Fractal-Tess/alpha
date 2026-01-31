@@ -1,16 +1,15 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "lucid",
       "dependencies": {
-        "@lucid/env": "workspace:*",
+        "@alpha/env": "workspace:*",
         "dotenv": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@lucid/config": "workspace:*",
+        "@alpha/config": "workspace:*",
         "lefthook": "^2.0.15",
         "oxfmt": "^0.26.0",
         "oxlint": "^1.41.0",
@@ -22,10 +21,10 @@
       "name": "web",
       "version": "0.0.1",
       "dependencies": {
+        "@alpha/backend": "workspace:*",
+        "@alpha/env": "workspace:*",
+        "@alpha/ui": "workspace:*",
         "@convex-dev/better-auth": "^0.10.10",
-        "@lucid/backend": "workspace:*",
-        "@lucid/env": "workspace:*",
-        "@lucid/ui": "workspace:*",
         "@lucide/svelte": "^0.563.1",
         "@mmailaender/convex-better-auth-svelte": "^0.5.0",
         "@sveltejs/adapter-node": "^5.5.2",
@@ -37,7 +36,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@lucid/config": "workspace:*",
+        "@alpha/config": "workspace:*",
         "@sveltejs/adapter-auto": "^7.0.0",
         "@sveltejs/kit": "^2.50.0",
         "@sveltejs/vite-plugin-svelte": "^6.2.4",
@@ -53,13 +52,13 @@
       },
     },
     "packages/ai": {
-      "name": "@lucid/ai",
+      "name": "@alpha/ai",
       "version": "1.0.0",
       "dependencies": {
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@lucid/config": "workspace:*",
+        "@alpha/config": "workspace:*",
         "@types/bun": "latest",
         "@types/node": "^25.0.10",
         "typescript": "catalog:",
@@ -67,11 +66,11 @@
       },
     },
     "packages/backend": {
-      "name": "@lucid/backend",
+      "name": "@alpha/backend",
       "version": "1.0.0",
       "dependencies": {
+        "@alpha/ai": "workspace:*",
         "@convex-dev/better-auth": "^0.10.10",
-        "@lucid/ai": "workspace:*",
         "@qdrant/js-client-rest": "^1.16.2",
         "better-auth": "1.4.9",
         "convex": "catalog:",
@@ -79,19 +78,19 @@
         "zod": "catalog:",
       },
       "devDependencies": {
+        "@alpha/config": "workspace:*",
         "@edge-runtime/vm": "^5.0.0",
-        "@lucid/config": "workspace:*",
         "@types/node": "^25.0.10",
         "typescript": "catalog:",
         "vite": "^7.3.1",
       },
     },
     "packages/config": {
-      "name": "@lucid/config",
+      "name": "@alpha/config",
       "version": "0.0.0",
     },
     "packages/env": {
-      "name": "@lucid/env",
+      "name": "@alpha/env",
       "version": "0.0.0",
       "dependencies": {
         "@t3-oss/env-core": "^0.13.10",
@@ -99,12 +98,12 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@lucid/config": "workspace:*",
+        "@alpha/config": "workspace:*",
         "typescript": "catalog:",
       },
     },
     "packages/ui": {
-      "name": "@lucid/ui",
+      "name": "@alpha/ui",
       "version": "0.0.1",
       "dependencies": {
         "@internationalized/date": "^3.10.0",
@@ -158,6 +157,16 @@
     "@acemir/cssom": ["@acemir/cssom@0.9.31", "", {}, "sha512-ZnR3GSaH+/vJ0YlHau21FjfLYjMpYVIzTD8M8vIEQvIGxeOXyXdzCI140rrCY862p/C/BbzWsjc1dgnM9mkoTA=="],
 
     "@adobe/css-tools": ["@adobe/css-tools@4.4.4", "", {}, "sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg=="],
+
+    "@alpha/ai": ["@alpha/ai@workspace:packages/ai"],
+
+    "@alpha/backend": ["@alpha/backend@workspace:packages/backend"],
+
+    "@alpha/config": ["@alpha/config@workspace:packages/config"],
+
+    "@alpha/env": ["@alpha/env@workspace:packages/env"],
+
+    "@alpha/ui": ["@alpha/ui@workspace:packages/ui"],
 
     "@ark/schema": ["@ark/schema@0.56.0", "", { "dependencies": { "@ark/util": "0.56.0" } }, "sha512-ECg3hox/6Z/nLajxXqNhgPtNdHWC9zNsDyskwO28WinoFEnWow4IsERNz9AnXRhTZJnYIlAJ4uGn3nlLk65vZA=="],
 
@@ -296,16 +305,6 @@
     "@layerstack/utils": ["@layerstack/utils@2.0.0-next.14", "", { "dependencies": { "d3-array": "^3.2.4", "d3-time": "^3.1.0", "d3-time-format": "^4.1.0", "lodash-es": "^4.17.21" } }, "sha512-1I2CS0Cwgs53W35qVg1eBdYhB/CiPvL3s0XE61b8jWkTHxgjBF65yYNgXjW74kv7WI7GsJcWMNBufPd0rnu9kA=="],
 
     "@levischuck/tiny-cbor": ["@levischuck/tiny-cbor@0.2.11", "", {}, "sha512-llBRm4dT4Z89aRsm6u2oEZ8tfwL/2l6BwpZ7JcyieouniDECM5AqNgr/y08zalEIvW3RSK4upYyybDcmjXqAow=="],
-
-    "@lucid/ai": ["@lucid/ai@workspace:packages/ai"],
-
-    "@lucid/backend": ["@lucid/backend@workspace:packages/backend"],
-
-    "@lucid/config": ["@lucid/config@workspace:packages/config"],
-
-    "@lucid/env": ["@lucid/env@workspace:packages/env"],
-
-    "@lucid/ui": ["@lucid/ui@workspace:packages/ui"],
 
     "@lucide/svelte": ["@lucide/svelte@0.561.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-vofKV2UFVrKE6I4ewKJ3dfCXSV6iP6nWVmiM83MLjsU91EeJcEg7LoWUABLp/aOTxj1HQNbJD1f3g3L0JQgH9A=="],
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@lucid/ui/shadcn/card';
+import { Button } from '@alpha/ui/shadcn/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@alpha/ui/shadcn/card';
 	import { Brain, FileText, Sparkles, BookOpen, ArrowRight } from '@lucide/svelte';
 
 	const features = [

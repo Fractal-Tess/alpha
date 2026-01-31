@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { useQuery, useConvexClient } from 'convex-svelte';
-	import { api } from '@lucid/backend/convex/_generated/api';
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '@lucid/ui/shadcn/card';
-	import { Input } from '@lucid/ui/shadcn/input';
-	import { Label } from '@lucid/ui/shadcn/label';
-	import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@lucid/ui/shadcn/dialog';
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@lucid/ui/shadcn/tabs';
+	import { api } from '@alpha/backend/convex/_generated/api';
+	import { Button } from '@alpha/ui/shadcn/button';
+	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
+	import { Input } from '@alpha/ui/shadcn/input';
+	import { Label } from '@alpha/ui/shadcn/label';
+	import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@alpha/ui/shadcn/dialog';
+	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@alpha/ui/shadcn/tabs';
 	import { 
 		Folder, FileText, Upload, Plus, ChevronRight, 
 		MoreHorizontal, Brain, Sparkles, FileEdit, BookOpen,

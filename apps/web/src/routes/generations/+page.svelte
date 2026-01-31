@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { useQuery, useConvexClient } from 'convex-svelte';
-	import { api } from '@lucid/backend/convex/_generated/api';
-	import { Button } from '@lucid/ui/shadcn/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '@lucid/ui/shadcn/card';
-	import { Input } from '@lucid/ui/shadcn/input';
-	import { Badge } from '@lucid/ui/shadcn/badge';
+	import { api } from '@alpha/backend/convex/_generated/api';
+	import { Button } from '@alpha/ui/shadcn/button';
+	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
+	import { Input } from '@alpha/ui/shadcn/input';
+	import { Badge } from '@alpha/ui/shadcn/badge';
 	import { 
 		Brain, BookOpen, FileEdit, Sparkles, Plus, 
 		Trash2, Loader2, CheckCircle, XCircle, Clock

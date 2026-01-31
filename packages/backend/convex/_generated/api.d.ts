@@ -12,11 +12,14 @@ import type * as auth from "../auth.js";
 import type * as functions_dailyStats from "../functions/dailyStats.js";
 import type * as functions_documentChunks from "../functions/documentChunks.js";
 import type * as functions_documents from "../functions/documents.js";
+import type * as functions_exports from "../functions/exports.js";
 import type * as functions_flashcardItems from "../functions/flashcardItems.js";
 import type * as functions_folders from "../functions/folders.js";
+import type * as functions_generationWorkflow from "../functions/generationWorkflow.js";
 import type * as functions_generations from "../functions/generations.js";
 import type * as functions_notesItems from "../functions/notesItems.js";
 import type * as functions_quizItems from "../functions/quizItems.js";
+import type * as functions_sharing from "../functions/sharing.js";
 import type * as functions_streaks from "../functions/streaks.js";
 import type * as functions_studySessions from "../functions/studySessions.js";
 import type * as functions_subjectGroups from "../functions/subjectGroups.js";
@@ -31,6 +34,7 @@ import type * as workflows_generateNotes from "../workflows/generateNotes.js";
 import type * as workflows_generateQuiz from "../workflows/generateQuiz.js";
 import type * as workflows_generateSummary from "../workflows/generateSummary.js";
 import type * as workflows_processDocument from "../workflows/processDocument.js";
+import type * as workflows_triggerGeneration from "../workflows/triggerGeneration.js";
 
 import type {
   ApiFromModules,
@@ -43,11 +47,14 @@ declare const fullApi: ApiFromModules<{
   "functions/dailyStats": typeof functions_dailyStats;
   "functions/documentChunks": typeof functions_documentChunks;
   "functions/documents": typeof functions_documents;
+  "functions/exports": typeof functions_exports;
   "functions/flashcardItems": typeof functions_flashcardItems;
   "functions/folders": typeof functions_folders;
+  "functions/generationWorkflow": typeof functions_generationWorkflow;
   "functions/generations": typeof functions_generations;
   "functions/notesItems": typeof functions_notesItems;
   "functions/quizItems": typeof functions_quizItems;
+  "functions/sharing": typeof functions_sharing;
   "functions/streaks": typeof functions_streaks;
   "functions/studySessions": typeof functions_studySessions;
   "functions/subjectGroups": typeof functions_subjectGroups;
@@ -62,6 +69,7 @@ declare const fullApi: ApiFromModules<{
   "workflows/generateQuiz": typeof workflows_generateQuiz;
   "workflows/generateSummary": typeof workflows_generateSummary;
   "workflows/processDocument": typeof workflows_processDocument;
+  "workflows/triggerGeneration": typeof workflows_triggerGeneration;
 }>;
 
 /**

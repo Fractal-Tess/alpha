@@ -2,7 +2,7 @@ import { v } from "convex/values";
 import { action, internalMutation, internalQuery } from "../_generated/server";
 import { api, internal } from "../_generated/api";
 import type { Id } from "../_generated/dataModel";
-import { summaryResponseSchema, createSummaryPrompt } from "@lucid/ai/prompts/summary";
+import { summaryResponseSchema, createSummaryPrompt } from "@alpha/ai/prompts/summary";
 
 /**
  * Document type for generation

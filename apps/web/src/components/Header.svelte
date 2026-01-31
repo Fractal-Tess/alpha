@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
-	import { Button } from '@lucid/ui/shadcn/button';
+	import { Button } from '@alpha/ui/shadcn/button';
 	import { LogOut, User } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
 

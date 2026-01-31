@@ -170,14 +170,15 @@ export default defineSchema({
   }).index("by_user", ["userId"]),
 
   sharedDecks: defineTable({
-    documentId: v.id("documents"),
+    generationId: v.id("generations"),
     ownerId: v.id("users"),
     shareCode: v.string(),
     isPublic: v.boolean(),
     createdAt: v.number(),
   })
     .index("by_share_code", ["shareCode"])
-    .index("by_owner", ["ownerId"]),
+    .index("by_owner", ["ownerId"])
+    .index("by_generation", ["generationId"]),
 
   // Phase 2: Chat with Document
   chatMessages: defineTable({

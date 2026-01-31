@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button } from "@lucid/ui/shadcn/button";
+import { Button } from "@alpha/ui/shadcn/button";
 </script>
 
 <div class="container mx-auto max-w-3xl px-4 py-8">
