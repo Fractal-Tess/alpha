@@ -1,0 +1,11 @@
+{
+  "name": "@alpha/assets",
+  "version": "0.0.1",
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "exports": {
+    "./logo/*": "./src/logo/*"
+  }
+}
