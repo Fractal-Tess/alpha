@@ -7,11 +7,10 @@
   };
 
   outputs =
-    {
-      self,
-      systems,
-      nixpkgs,
-      ...
+    { self
+    , systems
+    , nixpkgs
+    , ...
     }:
     let
       eachSystem =

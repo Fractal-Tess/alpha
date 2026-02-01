@@ -85,6 +85,26 @@ DO NOT:
 
 ---
 
+## TYPE SAFETY REQUIREMENTS
+
+**CRITICAL**: Run `bun run typecheck` after EVERY single code change:
+
+```
+1. Make any edit to TypeScript/Svelte files
+2. Run `bun run typecheck` immediately
+3. Fix all type errors before proceeding
+4. Only then run tests or build
+```
+
+This is non-negotiable. The project uses strict TypeScript settings:
+- `noUncheckedIndexedAccess`
+- `noUnusedLocals`
+- `noUnusedParameters`
+
+**Never** suppress type errors with `as any`, `@ts-ignore`, or `@ts-expect-error`.
+
+---
+
 ## COMMANDS
 
 ```bash
@@ -96,7 +116,7 @@ bun run dev:setup        # Configure Convex
 
 # Build & Check
 bun run build            # Build all packages
-bun run check-types      # TypeScript check
+bun run typecheck        # TypeScript check
 bun run check            # Lint + format (oxlint + oxfmt)
 
 # Testing
@@ -125,11 +145,12 @@ bun run shadcn add <component>   # Add shadcn component
 1. Read `tasks.md`, pick incomplete task (`[ ]`)
 2. Write tests first (TDD)
 3. Implement feature
-4. Run tests to confirm pass
-5. Run `bun run build` to validate
-6. Update `progress.txt` with timestamp + commit hash
-7. Mark task complete in `tasks.md`
-8. Commit with conventional format: `feat:`, `fix:`, `test:`
+4. **Run `bun run typecheck` to validate type safety**
+5. Run tests to confirm pass
+6. Run `bun run build` to validate
+7. Update `progress.txt` with timestamp + commit hash
+8. Mark task complete in `tasks.md`
+9. Commit with conventional format: `feat:`, `fix:`, `test:`
 
 ---
 
