@@ -11,6 +11,7 @@
     "./styles/*": "./src/lib/styles/*.css",
     "./dark-veil": "./src/lib/components/dark-veil/index.js",
     "./animations": "./src/lib/animations/index.ts",
+    "./logo": "./src/components/Logo.svelte",
     ".": "./src/lib/index.ts"
   },
   "scripts": {

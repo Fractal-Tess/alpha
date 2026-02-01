@@ -3,7 +3,6 @@
 	import BrainIcon from "@lucide/svelte/icons/brain";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 	import GraduationCapIcon from "@lucide/svelte/icons/graduation-cap";
-	import HomeIcon from "@lucide/svelte/icons/home";
 	import LayoutDashboardIcon from "@lucide/svelte/icons/layout-dashboard";
 	import LibraryIcon from "@lucide/svelte/icons/library";
 	import SettingsIcon from "@lucide/svelte/icons/settings";
@@ -102,6 +101,7 @@
 	import NavStudyTools from "./nav-study-tools.svelte";
 	import NavUser from "./nav-user.svelte";
 	import * as Sidebar from "@alpha/ui/shadcn/sidebar";
+	import Logo from "@alpha/ui/logo";
 	import type { ComponentProps } from "svelte";
 
 	let {
@@ -119,9 +119,9 @@
 					{#snippet child({ props })}
 						<a href="/dashboard" {...props}>
 							<div
-								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg overflow-hidden"
 							>
-								<HomeIcon class="size-4" />
+								<Logo variant="light" class="size-6" />
 							</div>
 							<div class="grid flex-1 text-start text-sm leading-tight">
 								<span class="truncate font-medium">Lucid</span>
