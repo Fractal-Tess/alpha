@@ -2,7 +2,7 @@
 
 **Generated:** 2026-01-31  
 **Stack:** SvelteKit 5 + Convex + TypeScript  
-**Package Manager:** Bun  
+**Package Manager:** Bun
 
 ---
 
@@ -34,36 +34,40 @@ AI-powered study platform with document processing, flashcards, quizzes, and sum
 
 ## WHERE TO LOOK
 
-| Task | Location | Notes |
-|------|----------|-------|
-| Add UI component | `packages/ui/src/lib/components/ui/` | Use `bun run shadcn` |
-| Add Convex query/mutation | `packages/backend/convex/functions/` | Follow existing patterns |
-| Add workflow | `packages/backend/convex/workflows/` | AI generation workflows |
-| Add AI prompt | `packages/ai/src/prompts/` | Include Zod schema |
-| Add web route | `apps/web/src/routes/` | SvelteKit file-based routing |
-| Add test | `packages/ai/src/**/*.test.ts` or `packages/ui/e2e/` | Vitest unit, Playwright e2e |
-| Schema changes | `packages/backend/convex/schema.ts` | 368 lines, comprehensive |
+| Task                      | Location                                             | Notes                        |
+| ------------------------- | ---------------------------------------------------- | ---------------------------- |
+| Add UI component          | `packages/ui/src/lib/components/ui/`                 | Use `bun run shadcn`         |
+| Add Convex query/mutation | `packages/backend/convex/functions/`                 | Follow existing patterns     |
+| Add workflow              | `packages/backend/convex/workflows/`                 | AI generation workflows      |
+| Add AI prompt             | `packages/ai/src/prompts/`                           | Include Zod schema           |
+| Add web route             | `apps/web/src/routes/`                               | SvelteKit file-based routing |
+| Add test                  | `packages/ai/src/**/*.test.ts` or `packages/ui/e2e/` | Vitest unit, Playwright e2e  |
+| Schema changes            | `packages/backend/convex/schema.ts`                  | 368 lines, comprehensive     |
 
 ---
 
 ## CONVENTIONS (Non-Standard)
 
 ### TypeScript
+
 - **Always prefer `type` over `interface`**
 - Strict mode: `noUncheckedIndexedAccess`, `noUnusedLocals`
 - **NO type assertions** (`as any`, `as Type`, `as unknown`)
 - **NO `@ts-*` comments** (ignore, expect-error, nocheck)
 
 ### Imports
+
 - Use `$lib` for internal imports within a package
 - Use `@lib` in `packages/ui` for cross-package imports
 - Workspace deps: `workspace:*` for internal, `catalog:` for shared
 
 ### Components
+
 - shadcn-svelte pattern: `component/` folder with `component.svelte` + `index.js`
 - Custom components alongside shadcn in `packages/ui/src/lib/components/ui/`
 
 ### Backend
+
 - Convex queries/mutations: export const functionName = query({...})
 - Workflows for async AI processing
 - Vector search: 1536-dim OpenAI embeddings in `documentChunks`
@@ -97,6 +101,7 @@ DO NOT:
 ```
 
 This is non-negotiable. The project uses strict TypeScript settings:
+
 - `noUncheckedIndexedAccess`
 - `noUnusedLocals`
 - `noUnusedParameters`
@@ -140,33 +145,81 @@ bun run shadcn add <component>   # Add shadcn component
 
 ---
 
-## WORKFLOW
+## AGENT WORKFLOW
+
+### Starting Work - ALWAYS DO FIRST
+
+```
+1. Search Supermemory for relevant context:
+   supermemory(mode: "search", query: "<task-related keywords>", scope: "project")
+
+2. Read tasks.md to find incomplete tasks
+
+3. Read relevant AGENTS.md sections for the area you're working in
+```
+
+**Why**: Supermemory contains accumulated knowledge about patterns, gotchas, and technical debt. Checking it first prevents repeating mistakes and ensures you follow established conventions.
+
+### During Work - Keep Memory Updated
+
+```
+When you discover new patterns, fix bugs, or learn important context:
+
+supermemory(mode: "add",
+  content: "<what you learned>",
+  type: "learned-pattern" | "error-solution" | "architecture",
+  scope: "project")
+```
+
+**Examples of what to save**:
+
+- Workarounds for tricky TypeScript issues
+- New patterns you established
+- Gotchas you encountered
+- Performance optimizations found
+- Configuration fixes
+
+### Ending Work - Capture Knowledge
+
+```
+Before finishing, update Supermemory with:
+- Any new conventions you followed
+- Technical debt you noticed but didn't fix
+- Architecture decisions made
+- Pain points encountered
+```
+
+---
+
+## DEVELOPMENT WORKFLOW
 
 1. Read `tasks.md`, pick incomplete task (`[ ]`)
-2. Write tests first (TDD)
-3. Implement feature
-4. **Run `bun run typecheck` to validate type safety**
-5. Run tests to confirm pass
-6. Run `bun run build` to validate
-7. Update `progress.txt` with timestamp + commit hash
-8. Mark task complete in `tasks.md`
-9. Commit with conventional format: `feat:`, `fix:`, `test:`
+2. **Search Supermemory for relevant context**
+3. Write tests first (TDD)
+4. Implement feature
+5. **Run `bun run typecheck` to validate type safety**
+6. Run tests to confirm pass
+7. Run `bun run build` to validate
+8. Update `progress.txt` with timestamp + commit hash
+9. **Update Supermemory with any new learnings**
+10. Mark task complete in `tasks.md`
+11. Commit with conventional format: `feat:`, `fix:`, `test:`
 
 ---
 
 ## DATABASE SCHEMA (Key Tables)
 
-| Table | Purpose |
-|-------|---------|
-| `users` | Auth via Better Auth |
-| `subjectGroups` | Top-level organization |
-| `subjects` | Within groups |
-| `folders` | Nested within subjects |
-| `documents` | Uploaded files (PDF/DOC/DOCX) |
-| `generations` | AI-generated content (flashcards/quiz/notes/summary) |
-| `flashcardItems` | With SM-2 algorithm fields |
-| `quizItems` | Multiple choice questions |
-| `documentChunks` | Vector embeddings (1536-dim) |
-| `dailyStats`, `streaks` | Progress tracking |
+| Table                   | Purpose                                              |
+| ----------------------- | ---------------------------------------------------- |
+| `users`                 | Auth via Better Auth                                 |
+| `subjectGroups`         | Top-level organization                               |
+| `subjects`              | Within groups                                        |
+| `folders`               | Nested within subjects                               |
+| `documents`             | Uploaded files (PDF/DOC/DOCX)                        |
+| `generations`           | AI-generated content (flashcards/quiz/notes/summary) |
+| `flashcardItems`        | With SM-2 algorithm fields                           |
+| `quizItems`             | Multiple choice questions                            |
+| `documentChunks`        | Vector embeddings (1536-dim)                         |
+| `dailyStats`, `streaks` | Progress tracking                                    |
 
 See `packages/backend/convex/schema.ts` for full schema (368 lines).

@@ -10,6 +10,7 @@
     "./shadcn/css": "./src/app.css",
     "./styles/*": "./src/lib/styles/*.css",
     "./dark-veil": "./src/lib/components/dark-veil/index.js",
+    "./animations": "./src/lib/animations/index.ts",
     ".": "./src/lib/index.ts"
   },
   "scripts": {

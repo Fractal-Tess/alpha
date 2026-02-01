@@ -1,7 +1,7 @@
 # Backend - Agent Knowledge Base
 
 **Generated:** 2026-01-31  
-**Stack:** Convex + Better Auth + TypeScript  
+**Stack:** Convex + Better Auth + TypeScript
 
 ---
 
@@ -36,20 +36,21 @@ convex/
 
 ## WHERE TO LOOK
 
-| Task | Location | Notes |
-|------|----------|-------|
-| Schema changes | `convex/schema.ts` | Define tables with validators |
-| Add query | `convex/functions/[name].ts` | Use `query({...})` pattern |
-| Add mutation | `convex/functions/[name].ts` | Use `mutation({...})` pattern |
-| Add workflow | `convex/workflows/[name].ts` | Background AI processing |
-| Auth config | `convex/auth.ts` | Better Auth setup |
-| HTTP routes | `convex/http.ts` | Auth endpoints |
+| Task           | Location                     | Notes                         |
+| -------------- | ---------------------------- | ----------------------------- |
+| Schema changes | `convex/schema.ts`           | Define tables with validators |
+| Add query      | `convex/functions/[name].ts` | Use `query({...})` pattern    |
+| Add mutation   | `convex/functions/[name].ts` | Use `mutation({...})` pattern |
+| Add workflow   | `convex/workflows/[name].ts` | Background AI processing      |
+| Auth config    | `convex/auth.ts`             | Better Auth setup             |
+| HTTP routes    | `convex/http.ts`             | Auth endpoints                |
 
 ---
 
 ## CONVENTIONS
 
 ### Functions
+
 ```typescript
 export const myQuery = query({
   args: { userId: v.id("users") },
@@ -60,11 +61,13 @@ export const myQuery = query({
 ```
 
 ### Schema
+
 - Use `v.union(v.literal(...))` for enums
 - Index frequently queried fields
 - Vector index for embeddings: `dimensions: 1536`
 
 ### Workflows
+
 - Trigger from mutations with `ctx.scheduler.runAfter()`
 - Use for AI generation (flashcards, quiz, notes, summary)
 - Update generation status: `generating` → `ready`/`failed`

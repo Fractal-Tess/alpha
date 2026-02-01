@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { useQuery, useConvexClient } from 'convex-svelte';
 	import { api } from '@alpha/backend/convex/_generated/api';
+	import type { Id } from '@alpha/backend/convex/_generated/dataModel';
 	import { Button } from '@alpha/ui/shadcn/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
 	import { Input } from '@alpha/ui/shadcn/input';
@@ -16,39 +17,51 @@
 	import { goto } from '$app/navigation';
 
 	const client = useConvexClient();
+	const currentUser = useQuery(api.functions.users.getCurrentUser);
 	const subjectId = $derived($page.params.id);
 	
-	const subject = useQuery(api.functions.subjects.get, () => ({ id: subjectId }));
-	const folders = useQuery(api.functions.folders.listBySubject, () => ({ subjectId }));
-	const documents = useQuery(api.functions.documents.listBySubject, () => ({ subjectId }));
-	const generations = useQuery(api.functions.generations.listBySubject, () => ({ subjectId }));
+	const subject = useQuery(api.functions.subjects.get, () =>
+		subjectId ? { id: subjectId as Id<'subjects'> } : 'skip'
+	);
+	const folders = useQuery(api.functions.folders.listBySubject, () =>
+		subjectId ? { subjectId: subjectId as Id<'subjects'> } : 'skip'
+	);
+	const documents = useQuery(api.functions.documents.listBySubject, () =>
+		subjectId ? { subjectId: subjectId as Id<'subjects'> } : 'skip'
+	);
+	const generations = useQuery(api.functions.generations.listBySubject, () =>
+		subjectId ? { subjectId: subjectId as Id<'subjects'> } : 'skip'
+	);
 
 	let newFolderName = $state('');
 	let isCreatingFolder = $state(false);
 	let selectedDocsForGeneration = $state<string[]>([]);
 	let newGenerationName = $state('');
-	let newGenerationType = $state<'flashcards' | 'quiz' | 'notes' | 'summary'>('flashcards');
+	const GENERATION_TYPES = ['flashcards', 'quiz', 'notes', 'summary'] as const;
+	let newGenerationType = $state<typeof GENERATION_TYPES[number]>('flashcards');
 	let isCreatingGeneration = $state(false);
 
 	async function handleCreateFolder() {
-		if (!newFolderName.trim()) return;
+		if (!newFolderName.trim() || !subjectId || !currentUser.data?._id) return;
 		isCreatingFolder = true;
 		await client.mutation(api.functions.folders.create, { 
 			name: newFolderName.trim(),
-			subjectId 
+			userId: currentUser.data._id,
+			subjectId: subjectId as Id<'subjects'>
 		});
 		newFolderName = '';
 		isCreatingFolder = false;
 	}
 
 	async function handleCreateGeneration() {
-		if (!newGenerationName.trim() || selectedDocsForGeneration.length === 0) return;
+		if (!newGenerationName.trim() || selectedDocsForGeneration.length === 0 || !subjectId || !currentUser.data?._id) return;
 		isCreatingGeneration = true;
 		await client.mutation(api.functions.generations.create, {
-			subjectId,
+			userId: currentUser.data._id,
+			subjectId: subjectId as Id<'subjects'>,
 			name: newGenerationName.trim(),
 			type: newGenerationType,
-			sourceDocumentIds: selectedDocsForGeneration
+			sourceDocumentIds: selectedDocsForGeneration as Id<'documents'>[]
 		});
 		newGenerationName = '';
 		selectedDocsForGeneration = [];
@@ -108,8 +121,8 @@
 						Upload Document
 					</Button>
 					<Dialog>
-						<DialogTrigger asChild let:builder>
-							<Button builders={[builder]} variant="outline">
+						<DialogTrigger>
+							<Button variant="outline">
 								<Folder class="size-4 mr-2" />
 								New Folder
 							</Button>
@@ -196,8 +209,8 @@
 
 			<TabsContent value="generations" class="space-y-6">
 				<Dialog>
-					<DialogTrigger asChild let:builder>
-						<Button builders={[builder]}>
+					<DialogTrigger>
+						<Button>
 							<Plus class="size-4 mr-2" />
 							New Generation
 						</Button>
@@ -210,7 +223,7 @@
 							<div class="space-y-2">
 								<Label>Generation Type</Label>
 								<div class="grid grid-cols-4 gap-2">
-									{#each ['flashcards', 'quiz', 'notes', 'summary'] as type}
+									{#each GENERATION_TYPES as type}
 										<Button
 											variant={newGenerationType === type ? 'default' : 'outline'}
 											size="sm"

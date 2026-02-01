@@ -1,20 +1,12 @@
 <script lang="ts">
 	import { authClient } from '$lib/auth-client';
-	import { Button } from '@alpha/ui/shadcn/button';
-	import { Input } from '@alpha/ui/shadcn/input';
-	import { Label } from '@alpha/ui/shadcn/label';
-	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
-	import { Tabs, TabsContent, TabsList, TabsTrigger } from '@alpha/ui/shadcn/tabs';
+	import { LoginForm } from '@alpha/ui/shadcn/login-form';
 	import { goto } from '$app/navigation';
 
-	let email = $state('');
-	let password = $state('');
-	let name = $state('');
 	let isLoading = $state(false);
 	let error = $state('');
 
-	async function handleSignIn(e: Event) {
-		e.preventDefault();
+	async function handleSignIn(email: string, password: string) {
 		isLoading = true;
 		error = '';
 		
@@ -32,8 +24,7 @@
 		}
 	}
 
-	async function handleSignUp(e: Event) {
-		e.preventDefault();
+	async function handleSignUp(name: string, email: string, password: string) {
 		isLoading = true;
 		error = '';
 		
@@ -53,80 +44,13 @@
 	}
 </script>
 
-<div class="container flex h-screen w-screen flex-col items-center justify-center">
-	<div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-		<div class="flex flex-col space-y-2 text-center">
-			<h1 class="text-2xl font-semibold tracking-tight">Welcome to Lucid</h1>
-			<p class="text-sm text-muted-foreground">Your AI-powered study companion</p>
-		</div>
-
-		<Tabs value="signin" class="w-full">
-			<TabsList class="grid w-full grid-cols-2">
-				<TabsTrigger value="signin">Sign In</TabsTrigger>
-				<TabsTrigger value="signup">Sign Up</TabsTrigger>
-			</TabsList>
-
-			<TabsContent value="signin">
-				<Card>
-					<CardHeader>
-						<CardTitle>Sign In</CardTitle>
-						<CardDescription>Enter your credentials to access your account</CardDescription>
-					</CardHeader>
-					<form onsubmit={handleSignIn}>
-						<CardContent class="space-y-4">
-							<div class="space-y-2">
-								<Label for="email">Email</Label>
-								<Input id="email" type="email" placeholder="name@example.com" bind:value={email} required />
-							</div>
-							<div class="space-y-2">
-								<Label for="password">Password</Label>
-								<Input id="password" type="password" bind:value={password} required />
-							</div>
-							{#if error}
-								<p class="text-sm text-red-500">{error}</p>
-							{/if}
-						</CardContent>
-						<CardFooter>
-							<Button type="submit" class="w-full" disabled={isLoading}>
-								{isLoading ? 'Signing in...' : 'Sign In'}
-							</Button>
-						</CardFooter>
-					</form>
-				</Card>
-			</TabsContent>
-
-			<TabsContent value="signup">
-				<Card>
-					<CardHeader>
-						<CardTitle>Create Account</CardTitle>
-						<CardDescription>Enter your details to create a new account</CardDescription>
-					</CardHeader>
-					<form onsubmit={handleSignUp}>
-						<CardContent class="space-y-4">
-							<div class="space-y-2">
-								<Label for="name">Name</Label>
-								<Input id="name" placeholder="John Doe" bind:value={name} required />
-							</div>
-							<div class="space-y-2">
-								<Label for="signup-email">Email</Label>
-								<Input id="signup-email" type="email" placeholder="name@example.com" bind:value={email} required />
-							</div>
-							<div class="space-y-2">
-								<Label for="signup-password">Password</Label>
-								<Input id="signup-password" type="password" bind:value={password} required minlength={8} />
-							</div>
-							{#if error}
-								<p class="text-sm text-red-500">{error}</p>
-							{/if}
-						</CardContent>
-						<CardFooter>
-							<Button type="submit" class="w-full" disabled={isLoading}>
-								{isLoading ? 'Creating account...' : 'Create Account'}
-							</Button>
-						</CardFooter>
-					</form>
-				</Card>
-			</TabsContent>
-		</Tabs>
+<div class="flex min-h-screen w-full items-center justify-center p-4">
+	<div class="w-full max-w-sm">
+		<LoginForm 
+			onSignIn={handleSignIn} 
+			onSignUp={handleSignUp}
+			{isLoading}
+			{error}
+		/>
 	</div>
 </div>

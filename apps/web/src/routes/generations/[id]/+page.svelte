@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { useQuery, useConvexClient } from 'convex-svelte';
 	import { api } from '@alpha/backend/convex/_generated/api';
+	import type { Id } from '@alpha/backend/convex/_generated/dataModel';
 	import { Button } from '@alpha/ui/shadcn/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
 	import { Badge } from '@alpha/ui/shadcn/badge';
@@ -15,14 +16,22 @@
 	const client = useConvexClient();
 	const generationId = $derived($page.params.id);
 	
-	const generation = useQuery(api.functions.generations.get, () => ({ id: generationId }));
-	const flashcardItems = useQuery(api.functions.flashcardItems.listByGeneration, () => ({ generationId }));
-	const quizItems = useQuery(api.functions.quizItems.listByGeneration, () => ({ generationId }));
-	const summaryContent = useQuery(api.functions.summaryItems.getByGeneration, () => ({ generationId }));
+	const generation = useQuery(api.functions.generations.get, () => 
+		generationId ? { id: generationId as Id<'generations'> } : 'skip'
+	);
+	const flashcardItems = useQuery(api.functions.flashcardItems.listByGeneration, () => 
+		generationId ? { generationId: generationId as Id<'generations'> } : 'skip'
+	);
+	const quizItems = useQuery(api.functions.quizItems.listByGeneration, () => 
+		generationId ? { generationId: generationId as Id<'generations'> } : 'skip'
+	);
+	const summaryContent = useQuery(api.functions.summaryItems.getByGeneration, () => 
+		generationId ? { generationId: generationId as Id<'generations'> } : 'skip'
+	);
 
 	async function handleRetry() {
-		if (generation.data?.type === 'flashcards') {
-			await client.mutation(api.workflows.generateFlashcards.retryGeneration, { generationId });
+		if (generation.data?.type === 'flashcards' && generationId) {
+			await client.action(api.workflows.generateFlashcards.retryGeneration, { generationId: generationId as Id<'generations'> });
 		}
 	}
 
@@ -30,7 +39,9 @@
 		flashcards: Brain,
 		quiz: BookOpen,
 		notes: FileEdit,
-		summary: Sparkles
+		summary: Sparkles,
+		study_guide: BookOpen,
+		concept_map: Brain
 	};
 
 	function getStatusColor(status: string) {

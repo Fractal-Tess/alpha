@@ -1,7 +1,7 @@
 # UI Package - Agent Knowledge Base
 
 **Generated:** 2026-01-31  
-**Stack:** Svelte 5 + shadcn-svelte + TailwindCSS 4  
+**Stack:** Svelte 5 + shadcn-svelte + TailwindCSS 4
 
 ---
 
@@ -35,19 +35,20 @@ src/
 
 ## WHERE TO LOOK
 
-| Task | Location | Notes |
-|------|----------|-------|
-| Add shadcn | `src/lib/components/ui/[name]/` | Use `bun run shadcn` |
-| Add custom | `src/lib/components/ui/[name]/` | Follow same pattern |
-| Test component | `src/routes/[name]/+page.svelte` | Isolated dev route |
-| E2E test | `e2e/[name].test.ts` | Playwright tests |
-| Export | `package.json` exports | Add to exports field |
+| Task           | Location                         | Notes                |
+| -------------- | -------------------------------- | -------------------- |
+| Add shadcn     | `src/lib/components/ui/[name]/`  | Use `bun run shadcn` |
+| Add custom     | `src/lib/components/ui/[name]/`  | Follow same pattern  |
+| Test component | `src/routes/[name]/+page.svelte` | Isolated dev route   |
+| E2E test       | `e2e/[name].test.ts`             | Playwright tests     |
+| Export         | `package.json` exports           | Add to exports field |
 
 ---
 
 ## CONVENTIONS
 
 ### Component Structure
+
 ```
 component-name/
 ├── component-name.svelte   # Main component
@@ -55,6 +56,7 @@ component-name/
 ```
 
 ### Exports (package.json)
+
 ```json
 {
   "./shadcn/*": "./src/lib/components/ui/*/index.js",
@@ -64,11 +66,13 @@ component-name/
 ```
 
 ### Import Aliases
+
 - **Within package:** Use `@lib` (NOT `$lib`)
 - **Why:** `$lib` resolves to importing package's lib, not this one
 - **Config:** `svelte.config.js` defines `@lib`: `./src/lib`
 
 ### Styling
+
 - TailwindCSS 4 with `@tailwindcss/vite`
 - `cn()` utility from `src/lib/utils.ts` for conditional classes
 - `mode-watcher` for dark mode

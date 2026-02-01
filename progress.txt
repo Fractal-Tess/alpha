@@ -1,0 +1,29 @@
+# Progress Log
+
+## 2026-02-01 - Sign-in Page Implementation
+
+**Commit:** (to be added after commit)
+
+### Completed
+- Installed shadcn-svelte login-05 component using `bunx shadcn-svelte@latest add login-05`
+- Component installed with dependencies: field, label, separator, input, button
+- Created `packages/ui/src/lib/components/ui/login-form/` with:
+  - `login-form.svelte` - Reusable login form component with Alpha branding
+  - `index.ts` - Barrel export
+- Updated `apps/web/src/routes/auth/+page.svelte` to use the new LoginForm component
+- Integrated with existing Better Auth client
+- Build and typecheck pass successfully
+
+### Component Features
+- Tabbed interface for Sign In / Sign Up
+- Email/password authentication
+- Social login buttons (Apple, Google) - UI only
+- Loading states
+- Error handling
+- Alpha logo and branding
+- Accessible form fields with labels
+
+### Technical Notes
+- Used proper internal imports within UI package (relative paths)
+- Component accepts callback props: `onSignIn`, `onSignUp`
+- Exported via `@alpha/ui/shadcn/login-form` wildcard pattern

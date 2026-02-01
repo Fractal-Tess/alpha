@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useQuery, useConvexClient } from 'convex-svelte';
 	import { api } from '@alpha/backend/convex/_generated/api';
+	import type { Id } from '@alpha/backend/convex/_generated/dataModel';
 	import { Button } from '@alpha/ui/shadcn/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
 	import { Input } from '@alpha/ui/shadcn/input';
@@ -9,6 +10,7 @@
 	import { Folder, BookOpen, Plus, ChevronRight } from '@lucide/svelte';
 
 	const convex = useConvexClient();
+	const currentUser = useQuery(api.functions.users.getCurrentUser);
 	const subjectGroups = useQuery(api.functions.subjectGroups.list);
 	const subjects = useQuery(api.functions.subjects.list);
 
@@ -19,19 +21,24 @@
 	let isCreatingSubject = $state(false);
 
 	async function handleCreateGroup() {
-		if (!newGroupName.trim()) return;
+		if (!newGroupName.trim() || !currentUser.data?._id) return;
 		isCreatingGroup = true;
-		await convex.mutation(api.functions.subjectGroups.create, { name: newGroupName.trim() });
+		await convex.mutation(api.functions.subjectGroups.create, { 
+			name: newGroupName.trim(),
+			userId: currentUser.data._id
+		});
 		newGroupName = '';
 		isCreatingGroup = false;
 	}
 
 	async function handleCreateSubject() {
-		if (!newSubjectName.trim()) return;
+		if (!newSubjectName.trim() || !currentUser.data?._id) return;
 		isCreatingSubject = true;
+		const groupId = selectedGroupId ? selectedGroupId as Id<'subjectGroups'> : undefined;
 		await convex.mutation(api.functions.subjects.create, { 
 			name: newSubjectName.trim(),
-			groupId: selectedGroupId || undefined
+			userId: currentUser.data._id,
+			groupId
 		});
 		newSubjectName = '';
 		isCreatingSubject = false;
@@ -56,8 +63,8 @@
 		</div>
 		<div class="flex gap-2">
 			<Dialog>
-				<DialogTrigger asChild let:builder>
-					<Button builders={[builder]} variant="outline">
+				<DialogTrigger>
+					<Button variant="outline">
 						<Folder class="size-4 mr-2" />
 						New Group
 					</Button>
@@ -79,8 +86,8 @@
 			</Dialog>
 
 			<Dialog>
-				<DialogTrigger asChild let:builder>
-					<Button builders={[builder]}>
+				<DialogTrigger>
+					<Button>
 						<BookOpen class="size-4 mr-2" />
 						New Subject
 					</Button>

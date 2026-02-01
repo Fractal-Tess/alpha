@@ -2,21 +2,23 @@
 	import { page } from '$app/stores';
 	import { useQuery, useConvexClient } from 'convex-svelte';
 	import { api } from '@alpha/backend/convex/_generated/api';
+	import type { Id } from '@alpha/backend/convex/_generated/dataModel';
 	import { Button } from '@alpha/ui/shadcn/button';
 	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@alpha/ui/shadcn/card';
 	import { Input } from '@alpha/ui/shadcn/input';
 	import { Label } from '@alpha/ui/shadcn/label';
 	import { Progress } from '@alpha/ui/shadcn/progress';
-	import { Upload, File, X, ArrowLeft } from '@lucide/svelte';
+	import { Upload, File as FileIcon, X, ArrowLeft } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
 
-	const subjectId = $derived($page.url.searchParams.get('subject') || '');
+	const subjectIdParam = $derived($page.url.searchParams.get('subject') || '');
 	
 	const convex = useConvexClient();
+	const currentUser = useQuery(api.functions.users.getCurrentUser);
 	const subjects = useQuery(api.functions.subjects.list);
 
 	let selectedFile = $state<File | null>(null);
-	let selectedSubjectId = $state(subjectId);
+	let selectedSubjectId = $state(subjectIdParam);
 	let isUploading = $state(false);
 	let uploadProgress = $state(0);
 	let error = $state('');
@@ -67,13 +69,16 @@
 				if (xhr.status === 200) {
 					const { storageId } = JSON.parse(xhr.responseText);
 					
-					await convex.mutation(api.functions.documents.create, {
-						subjectId: selectedSubjectId,
-						name: selectedFile.name,
-						storageId,
-						mimeType: selectedFile.type,
-						size: selectedFile.size
-					});
+					if (selectedFile && currentUser.data?._id) {
+						await convex.mutation(api.functions.documents.create, {
+							userId: currentUser.data._id,
+							subjectId: selectedSubjectId as Id<'subjects'>,
+							name: selectedFile.name,
+							storageId,
+							mimeType: selectedFile.type,
+							size: selectedFile.size
+						});
+					}
 					
 					goto(`/subjects/${selectedSubjectId}`);
 				} else {
@@ -88,7 +93,9 @@
 			};
 			
 			xhr.open('POST', uploadUrl);
-			xhr.send(selectedFile);
+			if (selectedFile) {
+				xhr.send(selectedFile);
+			}
 		} catch (err) {
 			error = 'Upload failed. Please try again.';
 			isUploading = false;
@@ -153,7 +160,7 @@
 				<div class="border rounded-lg p-4">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-3">
-							<File class="size-8 text-muted-foreground" />
+							<FileIcon class="size-8 text-muted-foreground" />
 							<div>
 								<p class="font-medium">{selectedFile.name}</p>
 								<p class="text-sm text-muted-foreground">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>

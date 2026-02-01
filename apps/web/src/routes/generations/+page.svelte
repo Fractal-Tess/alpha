@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useQuery, useConvexClient } from 'convex-svelte';
 	import { api } from '@alpha/backend/convex/_generated/api';
+	import type { Id } from '@alpha/backend/convex/_generated/dataModel';
 	import { Button } from '@alpha/ui/shadcn/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '@alpha/ui/shadcn/card';
 	import { Input } from '@alpha/ui/shadcn/input';
@@ -15,7 +16,7 @@
 
 	async function handleDelete(id: string) {
 		if (confirm('Are you sure you want to delete this generation?')) {
-			await client.mutation(api.functions.generations.remove, { id });
+			await client.mutation(api.functions.generations.remove, { id: id as Id<'generations'> });
 		}
 	}
 
@@ -23,14 +24,18 @@
 		flashcards: Brain,
 		quiz: BookOpen,
 		notes: FileEdit,
-		summary: Sparkles
+		summary: Sparkles,
+		study_guide: BookOpen,
+		concept_map: Brain
 	};
 
 	const typeColors = {
 		flashcards: 'bg-blue-500',
 		quiz: 'bg-green-500',
 		notes: 'bg-yellow-500',
-		summary: 'bg-purple-500'
+		summary: 'bg-purple-500',
+		study_guide: 'bg-orange-500',
+		concept_map: 'bg-pink-500'
 	};
 
 	function getStatusIcon(status: string) {
