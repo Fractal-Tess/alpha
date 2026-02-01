@@ -118,10 +118,8 @@
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a href="/dashboard" {...props}>
-							<div
-								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg overflow-hidden"
-							>
-								<Logo variant="light" class="size-6" />
+							<div class="flex aspect-square size-8 items-center justify-center">
+								<Logo variant="light" class="size-8" />
 							</div>
 							<div class="grid flex-1 text-start text-sm leading-tight">
 								<span class="truncate font-medium">Lucid</span>
